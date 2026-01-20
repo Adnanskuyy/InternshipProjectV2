@@ -32,7 +32,13 @@ public class SuspectController : MonoBehaviour
 
     private void OnDeduceClicked()
     {
-        // Tell the UI Manager to show the "Are you sure?" confirmation
-        FindObjectOfType<UIManager>().ShowDeductionConfirmation(this);
+        if (suspectData.isUser)
+        {
+            Debug.Log("YOU WIN! You found the user.");
+        }
+        else
+        {
+            Debug.Log("GAME OVER. That person was innocent.");
+        }
     }
 }

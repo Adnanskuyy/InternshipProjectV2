@@ -4,22 +4,62 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("UI References")]
-    public TextMeshProUGUI infoDisplayBox; // Where rumors/clues appear
-    public Button urineTestButton;
+    [Header("Main Panels")]
+    public GameObject mainLineupPanel;
+    public GameObject inspectionPanel;
 
-    // This function runs when you click a Person's Image
-    public void OnInspectPerson(int index)
+    [Header("Inspection UI Elements")]
+    public Image detailImageBox;      // The black box for eyes/hands
+    public TextMeshProUGUI infoText;  // The white box for descriptions
+    public Image suspectPortrait;    // The small picture of the person being inspected
+
+    private Suspect currentSuspect;   // Tracks who we are looking at right now
+
+    // Called by the SuspectController when you click the Black Box
+    public void OpenInspection(Suspect data)
     {
-        // Logic: Get data from SuspectGenerator for this index
-        // Display physical symptoms or rumors in the infoDisplayBox
-        Debug.Log("Inspecting Suspect #" + index);
+        currentSuspect = data;
+
+        // Show the panel and hide the main lineup
+        mainLineupPanel.SetActive(false);
+        inspectionPanel.SetActive(true);
+
+        // Reset UI to a clean state
+        suspectPortrait.sprite = data.mainPortrait;
+        infoText.text = "Select an area to inspect...";
+        detailImageBox.gameObject.SetActive(false); // Hide detail until a button is pressed
     }
 
-    // This function runs when you click the Purple "Person X" button
-    public void OnDeductChoice(int index)
+    // Button Functions for the Inspection Screen
+    public void OnInspectBody()
     {
-        // Logic: Check if Suspect[index].isUser == true
-        // Trigger Win or Loss screen
+        detailImageBox.gameObject.SetActive(true);
+        detailImageBox.sprite = currentSuspect.bodyDetailImage;
+        infoText.text = currentSuspect.bodyDescription;
+    }
+
+    public void OnInspectStuffs()
+    {
+        detailImageBox.gameObject.SetActive(true);
+        detailImageBox.sprite = currentSuspect.stuffsDetailImage;
+        infoText.text = currentSuspect.stuffsDescription;
+    }
+
+    public void OnInspectRumor()
+    {
+        detailImageBox.gameObject.SetActive(false); // Rumors are text only
+        infoText.text = currentSuspect.rumorDescription;
+    }
+
+    public void OnUseUrineTest()
+    {
+        infoText.text = currentSuspect.GetUrineTestResult();
+        // We will add logic later to disable the button after one use!
+    }
+
+    public void CloseInspection()
+    {
+        inspectionPanel.SetActive(false);
+        mainLineupPanel.SetActive(true);
     }
 }
