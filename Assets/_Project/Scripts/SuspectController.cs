@@ -13,6 +13,15 @@ public class SuspectController : MonoBehaviour
     public Button inspectButton; // The Black Box
     public Button deduceButton;  // The Purple Button
 
+    // Add this so the card sets itself up as soon as you press Play
+    private void Start()
+    {
+        if (suspectData != null)
+        {
+            Setup(suspectData);
+        }
+    }
+
     public void Setup(Suspect data)
     {
         suspectData = data;
