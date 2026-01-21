@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -81,6 +82,11 @@ public class UIManager : MonoBehaviour
 
     public void ShowResult(bool isWin)
     {
+        // 1. Turn OFF everything else first
+        mainLineupPanel.SetActive(false);
+        inspectionPanel.SetActive(false);
+
+        // 2. Turn ON the result panel
         resultPanel.SetActive(true);
 
         if (isWin)
@@ -99,7 +105,7 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
-        // Reloads the current scene to play again
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        // Gets the name of the current scene and loads it fresh
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
