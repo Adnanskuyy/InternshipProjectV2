@@ -17,6 +17,11 @@ public class UIManager : MonoBehaviour
     // ADD THIS LINE: This allows the script to "talk" to the button
     public Button urineTestButton;
 
+    [Header("Result UI")]
+    public GameObject resultPanel;
+    public TextMeshProUGUI resultTitleText;
+    public TextMeshProUGUI resultMessageText;
+
     private Suspect currentSuspect;
     private bool globalUrineTestUsed = false;
     // 1. Add this variable at the top to track the ACTIVE controller
@@ -72,5 +77,29 @@ public class UIManager : MonoBehaviour
     {
         inspectionPanel.SetActive(false);
         mainLineupPanel.SetActive(true);
+    }
+
+    public void ShowResult(bool isWin)
+    {
+        resultPanel.SetActive(true);
+
+        if (isWin)
+        {
+            resultTitleText.text = "CASE CLOSED";
+            resultTitleText.color = Color.green;
+            resultMessageText.text = "Great job! You identified the individual showing drug-use symptoms.";
+        }
+        else
+        {
+            resultTitleText.text = "WRONG TARGET";
+            resultTitleText.color = Color.red;
+            resultMessageText.text = "An innocent person was accused. The investigation has failed.";
+        }
+    }
+
+    public void RestartGame()
+    {
+        // Reloads the current scene to play again
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
