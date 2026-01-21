@@ -5,17 +5,20 @@ using TMPro;
 public class SuspectController : MonoBehaviour
 {
     [Header("Data Reference")]
-    public Suspect suspectData; // We will fill this via the Generator later
+    public Suspect suspectData;
 
     [Header("UI Components")]
     public Image portraitImage;
     public TextMeshProUGUI nameText;
-    public Button inspectButton; // The Black Box
-    public Button deduceButton;  // The Purple Button
+    public Button inspectButton;
+    public Button deduceButton;
 
-    // Add this so the card sets itself up as soon as you press Play
+    [Header("Game State")]
+    public bool isTheRealUser; // Set manually by GameManager at Start
+
     private void Start()
     {
+        // Automatically setup the UI if data was assigned in the Inspector
         if (suspectData != null)
         {
             Setup(suspectData);
@@ -28,26 +31,38 @@ public class SuspectController : MonoBehaviour
         portraitImage.sprite = data.mainPortrait;
         nameText.text = data.personName;
 
-        // Hook up the buttons in code for cleanliness
+        // Hook up the buttons in code
+        // We use RemoveAllListeners first to prevent double-triggering if Setup is called twice
+        inspectButton.onClick.RemoveAllListeners();
         inspectButton.onClick.AddListener(OnInspectClicked);
+
+        deduceButton.onClick.RemoveAllListeners();
         deduceButton.onClick.AddListener(OnDeduceClicked);
+    }
+
+    public void SetTargetStatus(bool status)
+    {
+        isTheRealUser = status;
     }
 
     private void OnInspectClicked()
     {
-        // Tell the UI Manager to show the Inspection Panel for this person
-        FindObjectOfType<UIManager>().OpenInspection(suspectData);
+        // Pass 'this' (the controller itself) to the UI Manager
+        FindObjectOfType<UIManager>().OpenInspection(suspectData, this);
     }
 
     private void OnDeduceClicked()
     {
-        if (suspectData.isUser)
+        // Professional Win/Loss Handling
+        if (isTheRealUser)
         {
-            Debug.Log("YOU WIN! You found the user.");
+            Debug.Log("<color=green>CORRECT!</color> You found the user.");
+            // Next Step: Trigger the Win UI Panel
         }
         else
         {
-            Debug.Log("GAME OVER. That person was innocent.");
+            Debug.Log("<color=red>WRONG!</color> This person was innocent.");
+            // Next Step: Trigger the Game Over UI Panel
         }
     }
 }

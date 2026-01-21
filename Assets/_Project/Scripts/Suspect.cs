@@ -5,7 +5,6 @@ using UnityEngine;
 public class Suspect : ScriptableObject // Change from 'class' to 'ScriptableObject'
 {
     public string personName;
-    public bool isUser;
 
     [Header("Visuals")]
     public Sprite mainPortrait;
@@ -17,10 +16,4 @@ public class Suspect : ScriptableObject // Change from 'class' to 'ScriptableObj
     [TextArea(3, 10)] public string stuffsDescription;
     [TextArea(3, 10)] public string rumorDescription;
 
-    public bool hasBeenTested = false;
-
-    public string GetUrineTestResult()
-    {
-        return isUser ? "The test result is POSITIVE." : "The test result is NEGATIVE.";
-    }
 }
