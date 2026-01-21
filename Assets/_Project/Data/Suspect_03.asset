@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe457ec08833ab45b0ad479809a7e78, type: 3}
+  m_Name: Suspect_03
+  m_EditorClassIdentifier: 
+  personName: Chika
+  isUser: 1
+  mainPortrait: {fileID: 21300000, guid: 47fdb6f4dc137d94881990eaf6cdfba1, type: 3}
+  bodyDetailImage: {fileID: 7482667652216324306, guid: fb8e8dd842614a34191686e0ca9c98dc, type: 3}
+  stuffsDetailImage: {fileID: 7482667652216324306, guid: 5ae66ab9fe7c69749856cf24c2c8aa24, type: 3}
+  bodyDescription: Sangat gelisah, rahangnya terus bergerak (seperti mengunyah sesuatu
+    padahal tidak ada makanan), dan ia berkeringat secara berlebihan meskipun ruangan
+    ber-AC dingin. Ia sangat sensitif dan cepat marah saat ditanya.
+  stuffsDescription: Botol air mineral yang terus ia minum, banyak permen karet,
+    dan sebuah pipet kaca kecil yang disembunyikan di dalam lipatan ikat pinggangnya.
+  rumorDescription: a terlihat tidak pernah merasa lelah dan bisa mengajar kelas
+    senam 5 sesi berturut-turut tanpa makan sedikit pun.
+  hasBeenTested: 0

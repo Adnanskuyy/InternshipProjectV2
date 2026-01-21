@@ -9,28 +9,32 @@ public class UIManager : MonoBehaviour
     public GameObject inspectionPanel;
 
     [Header("Inspection UI Elements")]
-    public Image detailImageBox;      // The black box for eyes/hands
-    public TextMeshProUGUI infoText;  // The white box for descriptions
-    public Image suspectPortrait;    // The small picture of the person being inspected
+    public Image detailImageBox;
+    public TextMeshProUGUI infoText;
+    public Image suspectPortrait;
 
-    private Suspect currentSuspect;   // Tracks who we are looking at right now
+    [Header("Interactive Elements")]
+    // ADD THIS LINE: This allows the script to "talk" to the button
+    public Button urineTestButton;
 
-    // Called by the SuspectController when you click the Black Box
-    public void OpenInspection(Suspect data)
+    private Suspect currentSuspect;
+    private bool globalUrineTestUsed = false;
+    // 1. Add this variable at the top to track the ACTIVE controller
+    private SuspectController currentController;
+
+    public void OpenInspection(Suspect data, SuspectController controller)
     {
         currentSuspect = data;
+        currentController = controller; // Remember which physical card this is
 
-        // Show the panel and hide the main lineup
         mainLineupPanel.SetActive(false);
         inspectionPanel.SetActive(true);
 
-        // Reset UI to a clean state
         suspectPortrait.sprite = data.mainPortrait;
         infoText.text = "Select an area to inspect...";
-        detailImageBox.gameObject.SetActive(false); // Hide detail until a button is pressed
+        detailImageBox.gameObject.SetActive(false);
     }
 
-    // Button Functions for the Inspection Screen
     public void OnInspectBody()
     {
         detailImageBox.gameObject.SetActive(true);
@@ -47,14 +51,21 @@ public class UIManager : MonoBehaviour
 
     public void OnInspectRumor()
     {
-        detailImageBox.gameObject.SetActive(false); // Rumors are text only
+        detailImageBox.gameObject.SetActive(false);
         infoText.text = currentSuspect.rumorDescription;
     }
 
     public void OnUseUrineTest()
     {
-        infoText.text = currentSuspect.GetUrineTestResult();
-        // We will add logic later to disable the button after one use!
+        if (globalUrineTestUsed) return;
+
+        // Direct check: Is the person we are currently looking at the real user?
+        bool isPositive = currentController.isTheRealUser;
+
+        infoText.text = isPositive ? "The test result is POSITIVE." : "The test result is NEGATIVE.";
+
+        globalUrineTestUsed = true;
+        urineTestButton.interactable = false;
     }
 
     public void CloseInspection()
