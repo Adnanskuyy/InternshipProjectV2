@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -28,10 +29,49 @@ public class UIManager : MonoBehaviour
     // 1. Add this variable at the top to track the ACTIVE controller
     private SuspectController currentController;
 
-    public void OpenInspection(Suspect data, SuspectController controller)
+    [Header("Fader Settings")]
+    public CanvasGroup faderCanvasGroup;
+    public Animator faderAnimator;
+    private bool isTransitioning = false; // The Guard
+
+    public void CloseInspection()
     {
+        if (isTransitioning) return; // Ignore clicks if already fading
+        StartCoroutine(TransitionToLineup());
+    }
+
+    private IEnumerator TransitionToLineup()
+    {
+        isTransitioning = true; // Lock
+
+        faderCanvasGroup.blocksRaycasts = true;
+
+        // 1. Fade to Black
+        yield return StartCoroutine(FadeCanvas(0, 1, 0.4f));
+
+        // 2. The Switch (Done while screen is 100% black)
+        inspectionPanel.SetActive(false);
+        mainLineupPanel.SetActive(true);
+
+        // Safety check: Ensure the other panel is definitely off
+        if (resultPanel != null) resultPanel.SetActive(false);
+
+        // 3. Fade to Clear
+        yield return StartCoroutine(FadeCanvas(1, 0, 0.4f));
+
+        faderCanvasGroup.blocksRaycasts = false;
+        isTransitioning = false; // Unlock
+    }
+
+    private IEnumerator TransitionToInspect(Suspect data, SuspectController controller)
+    {
+        // 1. BLOCK CLICKS & FADE TO BLACK
+        faderCanvasGroup.blocksRaycasts = true;
+        yield return StartCoroutine(FadeCanvas(0, 1, 0.4f)); // Fade from 0 to 1 over 0.4s
+
+        // 2. THE HIDDEN SWITCH (Happens while screen is 100% black)
         currentSuspect = data;
-        currentController = controller; // Remember which physical card this is
+        currentController = controller;
 
         mainLineupPanel.SetActive(false);
         inspectionPanel.SetActive(true);
@@ -39,6 +79,28 @@ public class UIManager : MonoBehaviour
         suspectPortrait.sprite = data.mainPortrait;
         infoText.text = "Select an area to inspect...";
         detailImageBox.gameObject.SetActive(false);
+
+        // 3. FADE BACK TO CLEAR & UNLOCK
+        yield return StartCoroutine(FadeCanvas(1, 0, 0.4f));
+        faderCanvasGroup.blocksRaycasts = false;
+    }
+
+    // THE WORKHORSE FUNCTION
+    private IEnumerator FadeCanvas(float start, float end, float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            faderCanvasGroup.alpha = Mathf.Lerp(start, end, elapsed / duration);
+            yield return null;
+        }
+        faderCanvasGroup.alpha = end;
+    }
+
+    public void OpenInspection(Suspect data, SuspectController controller)
+    {
+        StartCoroutine(TransitionToInspect(data, controller));
     }
 
     public void OnInspectBody()
@@ -72,12 +134,6 @@ public class UIManager : MonoBehaviour
 
         globalUrineTestUsed = true;
         urineTestButton.interactable = false;
-    }
-
-    public void CloseInspection()
-    {
-        inspectionPanel.SetActive(false);
-        mainLineupPanel.SetActive(true);
     }
 
     public void ShowResult(bool isWin)
