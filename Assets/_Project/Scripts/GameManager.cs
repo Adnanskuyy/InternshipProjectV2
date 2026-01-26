@@ -1,40 +1,70 @@
+using System.Collections.Generic; // This fixes the List error!
 using UnityEngine;
-using System.Collections.Generic;
+using System.Collections; // Required for Coroutines
 
 public class GameManager : MonoBehaviour
 {
     [Header("Manual Setup")]
-    [Tooltip("Drag your 4 SuspectCard objects from the Hierarchy here.")]
     public List<SuspectController> cards;
-
-    [Tooltip("Which card is the user? (0 to 3)")]
     public int targetUserIndex;
+
+    [Header("FTUX References")]
+    public CanvasGroup briefingCanvasGroup; // Drag BriefingOverlay here
+    public GameObject briefingOverlayObject;
+
+    private const string FirstTimeKey = "HasSeenBriefing";
 
     void Start()
     {
-        // Safety Check: Ensure the list is not empty
-        if (cards == null || cards.Count == 0)
+        InitializeGame();
+        HandleBriefing();
+    }
+
+    private void HandleBriefing()
+    {
+        // Check if the player has played before
+        if (PlayerPrefs.GetInt(FirstTimeKey, 0) == 0)
         {
-            Debug.LogError("GameManager: The 'cards' list is empty! Drag your SuspectCards into the Inspector.");
-            return;
+            briefingOverlayObject.SetActive(true);
+            briefingCanvasGroup.alpha = 1f; // Ensure it's visible
+        }
+        else
+        {
+            briefingOverlayObject.SetActive(false);
+        }
+    }
+
+    // Called by the "Begin Investigation" Button
+    public void StartMission()
+    {
+        StartCoroutine(FadeOutBriefing());
+
+        // Save the breadcrumb
+        PlayerPrefs.SetInt(FirstTimeKey, 1);
+        PlayerPrefs.Save();
+    }
+
+    private IEnumerator FadeOutBriefing()
+    {
+        float duration = 0.5f; // Half a second fade
+        float currentTime = 0f;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            briefingCanvasGroup.alpha = Mathf.Lerp(1f, 0f, currentTime / duration);
+            yield return null; // Wait for next frame
         }
 
-        InitializeGame();
+        briefingOverlayObject.SetActive(false);
     }
 
     public void InitializeGame()
     {
         for (int i = 0; i < cards.Count; i++)
         {
-            // If the current index matches our target, set to true
             bool isTarget = (i == targetUserIndex);
-
-            if (cards[i] != null)
-            {
-                cards[i].SetTargetStatus(isTarget);
-            }
+            if (cards[i] != null) cards[i].SetTargetStatus(isTarget);
         }
-
-        Debug.Log($"Game Started. Target is Suspect at index: {targetUserIndex}");
     }
 }
