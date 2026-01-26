@@ -2875,10 +2875,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 358379770}
-  - {fileID: 1132656507}
   - {fileID: 1124208373}
   - {fileID: 206550296}
   - {fileID: 1911233594}
+  - {fileID: 1132656507}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5144,6 +5144,8 @@ MonoBehaviour:
   resultPanel: {fileID: 206550295}
   resultTitleText: {fileID: 1601215790}
   resultMessageText: {fileID: 1725778726}
+  faderCanvasGroup: {fileID: 1132656508}
+  faderAnimator: {fileID: 0}
 --- !u!114 &1945109926
 MonoBehaviour:
   m_ObjectHideFlags: 0
