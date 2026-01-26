@@ -53,16 +53,6 @@ public class SuspectController : MonoBehaviour
 
     private void OnDeduceClicked()
     {
-        // Professional Win/Loss Handling
-        if (isTheRealUser)
-        {
-            Debug.Log("<color=green>CORRECT!</color> You found the user.");
-            // Next Step: Trigger the Win UI Panel
-        }
-        else
-        {
-            Debug.Log("<color=red>WRONG!</color> This person was innocent.");
-            // Next Step: Trigger the Game Over UI Panel
-        }
+        FindObjectOfType<UIManager>().ShowResult(isTheRealUser);
     }
 }
