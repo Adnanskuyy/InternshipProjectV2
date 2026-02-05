@@ -14,7 +14,7 @@ public class SuspectController : MonoBehaviour
     public Button deduceButton;
 
     [Header("Game State")]
-    public bool isTheRealUser; // Set manually by GameManager at Start
+    public bool isTheRealUser;
 
     private void Start()
     {
@@ -28,11 +28,13 @@ public class SuspectController : MonoBehaviour
     public void Setup(Suspect data)
     {
         suspectData = data;
-        portraitImage.sprite = data.mainPortrait;
-        nameText.text = data.personName;
 
-        // Hook up the buttons in code
-        // We use RemoveAllListeners first to prevent double-triggering if Setup is called twice
+        // Update the visuals based on the ScriptableObject data
+        if (portraitImage != null) portraitImage.sprite = data.mainPortrait;
+        if (nameText != null) nameText.text = data.personName;
+
+        // 1. REFACTORED BUTTON HOOKS
+        // We clear listeners to avoid memory leaks or double-triggers
         inspectButton.onClick.RemoveAllListeners();
         inspectButton.onClick.AddListener(OnInspectClicked);
 
@@ -47,12 +49,20 @@ public class SuspectController : MonoBehaviour
 
     private void OnInspectClicked()
     {
-        // Pass 'this' (the controller itself) to the UI Manager
-        FindObjectOfType<UIManager>().OpenInspection(suspectData, this);
+        // 2. USING THE SINGLETON
+        // No more FindObjectOfType! Direct, fast access.
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.OpenInspection(suspectData, this);
+        }
     }
 
     private void OnDeduceClicked()
     {
-        FindObjectOfType<UIManager>().ShowResult(isTheRealUser);
+        // Direct call to show the result panel
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowResult(isTheRealUser);
+        }
     }
 }
