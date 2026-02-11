@@ -1,8 +1,7 @@
 using UnityEngine;
 
-// This line allows you to right-click in Unity to create new Suspect data files!
-[CreateAssetMenu(fileName = "NewSuspect", menuName = "DeductionGame/Suspect")]
-public class Suspect : ScriptableObject // Change from 'class' to 'ScriptableObject'
+[CreateAssetMenu(fileName = "Suspect_", menuName = "DetectiveGame/SuspectData")]
+public class SuspectSO : ScriptableObject
 {
     [Header("Basic Information")]
     public string suspectName;

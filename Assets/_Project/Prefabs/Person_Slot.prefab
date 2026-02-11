@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3329557854057681929}
   - component: {fileID: 2550710133696722816}
+  - component: {fileID: 5610763584117280085}
   m_Layer: 5
   m_Name: Person_Slot
   m_TagString: Untagged
@@ -176,15 +177,33 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
+  m_ChildAlignment: 4
+  m_Spacing: 20
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &5610763584117280085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2546736072305396778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afc4e73dd7590a944b70070362c2615c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sessionData: {fileID: 11400000, guid: 2a58cc300a3115f47be8b984dbf24577, type: 2}
+  portraitImg: {fileID: 1002764603519027676}
+  nameText: {fileID: 6175829509902800501}
+  statusButton: {fileID: 6555833889768247788}
+  statusButtonBg: {fileID: 0}
+  statusText: {fileID: 1668160713901964141}
 --- !u!1 &3923883909713726696
 GameObject:
   m_ObjectHideFlags: 0

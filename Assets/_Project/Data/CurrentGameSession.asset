@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b646e21fbfb4b499b0624906ce48e7, type: 3}
+  m_Name: CurrentGameSession
+  m_EditorClassIdentifier: 
+  suspectsInSession:
+  - {fileID: 11400000, guid: 8ec6b9ea46c0a47449609fb497048822, type: 2}
+  - {fileID: 11400000, guid: f79095945d5968d47b74663ae259a367, type: 2}
+  - {fileID: 11400000, guid: cb6bc490b17239543a071189d2fcdbba, type: 2}
+  - {fileID: 11400000, guid: ed50a70cdcbf8f34393ea9a841c9a729, type: 2}
+  urineTestUsed: 0
+  currentlySelectedSuspect: {fileID: 0}
+  playerAssignedStatuses: 
