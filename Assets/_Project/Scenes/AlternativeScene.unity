@@ -2665,7 +2665,7 @@ GameObject:
   - component: {fileID: 1128674397}
   - component: {fileID: 1128674396}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BodyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2734,7 +2734,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1128674397}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1898942291}
+        m_TargetAssemblyTypeName: InvestigationPanelUI, Assembly-CSharp
+        m_MethodName: OnCheckBodyClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1128674397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3720,7 +3732,7 @@ GameObject:
   - component: {fileID: 1706160903}
   - component: {fileID: 1706160902}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: StuffButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3789,7 +3801,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1706160903}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1898942291}
+        m_TargetAssemblyTypeName: InvestigationPanelUI, Assembly-CSharp
+        m_MethodName: OnCheckStuffClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1706160903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3841,7 +3865,7 @@ GameObject:
   - component: {fileID: 1716162549}
   - component: {fileID: 1716162548}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: UrineButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3910,7 +3934,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1716162549}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1898942291}
+        m_TargetAssemblyTypeName: InvestigationPanelUI, Assembly-CSharp
+        m_MethodName: OnUrineTestClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1716162549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4246,7 +4282,7 @@ GameObject:
   - component: {fileID: 1949540572}
   - component: {fileID: 1949540571}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: RumorButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4315,7 +4351,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1949540572}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1898942291}
+        m_TargetAssemblyTypeName: InvestigationPanelUI, Assembly-CSharp
+        m_MethodName: OnCheckRumorClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1949540572
 MonoBehaviour:
   m_ObjectHideFlags: 0

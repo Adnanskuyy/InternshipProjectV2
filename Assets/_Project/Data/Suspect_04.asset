@@ -15,10 +15,10 @@ MonoBehaviour:
   suspectName: Suspect 4
   portrait: {fileID: 0}
   bodyImage: {fileID: 0}
-  bodyDescription: 
+  bodyDescription: Test Body Description 4
   stuffImage: {fileID: 0}
-  stuffDescription: 
-  rumorText: 
+  stuffDescription: Test Stuffs Description 4
+  rumorText: Test Rumor Description 4
   isActuallyUsingDrugs: 0
-  urineTestResultPositive: The test results are positive for prohibited substances.
-  urineTestResultNegative: The test results are negative.
+  urineTestResultPositive: Hell yeah its positive for 4
+  urineTestResultNegative: No its not positive for 4
