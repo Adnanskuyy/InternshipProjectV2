@@ -9,18 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbe457ec08833ab45b0ad479809a7e78, type: 3}
+  m_Script: {fileID: 11500000, guid: 87a8946d18ae6a14cb5f234b2a2a7ae7, type: 3}
   m_Name: Suspect_01
   m_EditorClassIdentifier: 
-  personName: Aris
-  isUser: 0
-  mainPortrait: {fileID: 21300000, guid: e939266738422f44cb78f0ee712db098, type: 3}
-  bodyDetailImage: {fileID: 7482667652216324306, guid: ca69dc56ccde6814fabceb0ca41e36ec, type: 3}
-  stuffsDetailImage: {fileID: 7482667652216324306, guid: 4f8c281b7d430b84d89173f4ad0cf21f, type: 3}
-  bodyDescription: Matanya sangat merah, sering menguap, dan gerakan tubuhnya lambat.
-    Ia terlihat bingung saat ditanya dan sering lupa apa yang baru saja ia bicarakan.
-  stuffsDescription: Botol tetes mata, sekantong plastik berisi dedaunan kering yang
-    berbau apek, dan kertas papir.
-  rumorDescription: Teman kosnya sering mencium bau asap aneh dari kamarnya setiap
-    malam.
-  hasBeenTested: 0
+  suspectName: Suspect 1
+  portrait: {fileID: 0}
+  bodyImage: {fileID: 0}
+  bodyDescription: Test Body Description 1
+  stuffImage: {fileID: 0}
+  stuffDescription: Test Stuffs Description 1
+  rumorText: Test Rumor Description 1
+  isActuallyUsingDrugs: 1
+  urineTestResultPositive: Hell yeah its positive for 1
+  urineTestResultNegative: No its not positive for 1
