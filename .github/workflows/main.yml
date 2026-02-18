@@ -35,12 +35,17 @@ jobs:
           allowDirtyBuild: true
           customImage: "unityci/editor:ubuntu-6000.3.8f1-webgl-3"
 
+      - name: Print Unity Log to Console
+        if: always()
+        run: |
+          find ${{ github.workspace }} ~/.config/unity3d ~/.local/share/unity3d -type f -name "*.log" 2>/dev/null -exec echo "=== {} ===" \; -exec cat {} \;
+
       - name: Upload Unity Build Log
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: Unity-Editor-Log
-          path: Logs/
+          path: "**/*.log"
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
