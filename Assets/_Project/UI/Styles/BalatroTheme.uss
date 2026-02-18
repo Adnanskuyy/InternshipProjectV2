@@ -1,0 +1,101 @@
+.background {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(200, 200, 200);
+}
+
+.card-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.card {
+    width: 220px;
+    height: 450px;
+    margin: 15px;
+    background-color: rgb(220, 220, 220);
+    border-width: 4px;
+    border-color: rgb(20, 20, 20);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.card-person {
+    flex-grow: 1;
+    background-color: rgb(59, 60, 132); /* Deep Blue */
+    justify-content: center;
+    align-items: center;
+    border-width: 2px;
+    border-color: rgba(0,0,0,0.5);
+    margin-bottom: 8px;
+}
+
+.card-person-label {
+    color: white;
+    font-size: 24px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.card-name {
+    height: 60px;
+    background-color: rgb(93, 64, 55); /* Brown */
+    justify-content: center;
+    align-items: center;
+    border-width: 2px;
+    border-color: rgba(0,0,0,0.5);
+    margin-bottom: 8px;
+}
+
+.card-name-label {
+    color: white;
+    font-size: 18px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.card-status {
+    height: 60px;
+    background-color: rgb(76, 175, 80); /* Green */
+    justify-content: center;
+    align-items: center;
+    border-width: 2px;
+    border-color: rgba(0,0,0,0.5);
+}
+
+.card-status-label {
+    color: white;
+    font-size: 18px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.predict-button {
+    width: 600px;
+    height: 80px;
+    background-color: rgb(255, 0, 0); /* Bright Red */
+    border-width: 6px;
+    border-color: rgb(0, 0, 0);
+    color: white;
+    font-size: 40px;
+    -unity-font-style: bold;
+    border-radius: 8px;
+    margin-top: 20px;
+    transition-duration: 0.1s;
+}
+
+.predict-button:hover {
+    background-color: rgb(220, 0, 0);
+    scale: 1.02;
+}
+
+.predict-button:active {
+    background-color: rgb(180, 0, 0);
+    scale: 0.98;
+}

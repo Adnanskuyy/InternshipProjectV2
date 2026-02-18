@@ -1,0 +1,60 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/BalatroTheme.uss" />
+    <ui:VisualElement class="background">
+        <ui:VisualElement class="card-container" name="card-container">
+            <!-- Card 1 -->
+            <ui:VisualElement class="card">
+                <ui:VisualElement class="card-person" name="person-visual-0">
+                    <ui:Label text="PERSON" class="card-person-label" />
+                </ui:VisualElement>
+                <ui:VisualElement class="card-name">
+                    <ui:Label text="NAME" class="card-name-label" name="name-label-0" />
+                </ui:VisualElement>
+                <ui:VisualElement class="card-status">
+                    <ui:Label text="STATUS" class="card-status-label" name="status-label-0" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            
+            <!-- Card 2 -->
+            <ui:VisualElement class="card">
+                <ui:VisualElement class="card-person" name="person-visual-1">
+                    <ui:Label text="PERSON" class="card-person-label" />
+                </ui:VisualElement>
+                <ui:VisualElement class="card-name">
+                    <ui:Label text="NAME" class="card-name-label" name="name-label-1" />
+                </ui:VisualElement>
+                <ui:VisualElement class="card-status">
+                    <ui:Label text="STATUS" class="card-status-label" name="status-label-1" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- Card 3 -->
+            <ui:VisualElement class="card">
+                <ui:VisualElement class="card-person" name="person-visual-2">
+                    <ui:Label text="PERSON" class="card-person-label" />
+                </ui:VisualElement>
+                <ui:VisualElement class="card-name">
+                    <ui:Label text="NAME" class="card-name-label" name="name-label-2" />
+                </ui:VisualElement>
+                <ui:VisualElement class="card-status">
+                    <ui:Label text="STATUS" class="card-status-label" name="status-label-2" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- Card 4 -->
+            <ui:VisualElement class="card">
+                <ui:VisualElement class="card-person" name="person-visual-3">
+                    <ui:Label text="PERSON" class="card-person-label" />
+                </ui:VisualElement>
+                <ui:VisualElement class="card-name">
+                    <ui:Label text="NAME" class="card-name-label" name="name-label-3" />
+                </ui:VisualElement>
+                <ui:VisualElement class="card-status">
+                    <ui:Label text="STATUS" class="card-status-label" name="status-label-3" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        
+        <ui:Button text="PREDIKSI" name="predict-button" class="predict-button" />
+    </ui:VisualElement>
+</ui:UXML>
