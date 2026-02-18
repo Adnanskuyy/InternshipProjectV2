@@ -34,24 +34,26 @@ jobs:
         with:
           targetPlatform: WebGL
           unityVersion: 6000.3.8f1
-          # NEW: Unity 6 can be memory intensive; adding this helps stable builds
-          buildMethod: UnityBuilder.BuildInternal.PerformBuild
-          # NEW: Use a custom image if the default fails to find 6000.3.8f1
+          # Change: Unity 6 often requires 'allowDirtyBuild' during upgrades
+          allowDirtyBuild: true
+          # Keep your custom image if you're sure about the tag,
+          # but usually, letting Game-CI pick the image is safer.
           customImage: "unityci/editor:ubuntu-6000.3.8f1-webgl-3"
-
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: WebGL-Build
-          # Saves build files for deployment
-          path: build/WebGL
 
       - name: Upload Unity Build Log
         uses: actions/upload-artifact@v4
-        if: failure() # Only runs if the build fails
+        if: always() # Change to always so you can see logs even on success
         with:
           name: Unity-Editor-Log
-          path: github-back-action-*.log # Or the path to your log file
+          # Change: This wildcard is more reliable for finding the log
+          path: "*.log"
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: WebGL-Build
+          path: build/WebGL
 
   deploy:
     name: Deploy to GitHub Pages
