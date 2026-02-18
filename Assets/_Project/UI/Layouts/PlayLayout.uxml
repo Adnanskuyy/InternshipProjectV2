@@ -1,0 +1,30 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Template name="InvestigationPanel" src="InvestigationPanel.uxml" />
+    <ui:Style src="../Styles/BalatroTheme.uss" />
+    
+    <!-- Background Container -->
+    <ui:VisualElement name="background-layer" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;" />
+
+    <!-- Main Game Panel -->
+    <ui:VisualElement name="main-panel" class="main-panel">
+        <ui:Label text="WHO IS THE SUSPECT?" class="header-text" />
+        
+        <!-- Suspects Container -->
+        <ui:VisualElement name="suspects-list" class="suspects-container">
+            <!-- Cards will be instantiated here -->
+        </ui:VisualElement>
+
+        <!-- Bottom Controls -->
+        <ui:Button name="predict-button" text="PREDIKSI" class="predict-button disabled" />
+    </ui:VisualElement>
+
+    <!-- Overlays -->
+    <ui:Instance template="InvestigationPanel" name="investigation-overlay" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; display: none;" />
+    
+    <ui:VisualElement name="result-panel" class="result-panel hidden">
+        <ui:Label name="result-title" text="CASE CLOSED" class="result-title" />
+        <ui:Label name="result-message" text="You found the culprit!" class="result-message" />
+        <ui:Button name="restart-button" text="PLAY AGAIN" class="restart-button" />
+    </ui:VisualElement>
+
+</ui:UXML>

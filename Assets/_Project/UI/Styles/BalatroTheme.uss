@@ -1,101 +1,242 @@
-.background {
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(200, 200, 200);
+/* Balatro Theme Colors */
+:root {
+    --balatro-red: #D32F2F;
+    --balatro-blue: #303F9F;
+    --balatro-green: #388E3C;
+    --balatro-brown: #5D4037;
+    --balatro-text: #FFFFFF;
+    --balatro-dark: #212121;
 }
 
-.card-container {
+/* Global Text */
+.header-text {
+    font-size: 60px;
+    color: var(--balatro-text);
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin-bottom: 40px;
+    text-shadow: 4px 4px 0px black;
+}
+
+/* Card Styling */
+.suspect-card {
+    width: 22%;
+    min-width: 200px;
+    height: 60%;
+    min-height: 400px;
+    background-color: var(--balatro-blue);
+    border-width: 6px;
+    border-color: black;
+    border-radius: 15px;
+    margin: 1%;
+    padding: 15px;
+    align-items: center;
+    justify-content: space-between;
+    transition: scale 0.1s ease-out, rotate 0.1s ease-out;
+}
+
+.suspect-card:hover {
+    scale: 1.05;
+    rotate: 2deg;
+    border-color: white;
+}
+
+.card-portrait {
+    width: 100%;
+    height: 65%;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: rgba(0,0,0,0.5);
+}
+
+.card-name {
+    font-size: 28px;
+    color: white;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    white-space: normal;
+}
+
+/* Status Button */
+.status-button {
+    width: 100%;
+    height: 60px;
+    font-size: 22px;
+    -unity-font-style: bold;
+    color: white;
+    border-width: 4px;
+    border-color: black;
+    border-radius: 8px;
+    transition: scale 0.05s ease-out;
+}
+
+.status-button:active {
+    scale: 0.95;
+}
+
+.status-unknown { background-color: var(--balatro-brown); }
+.status-negative { background-color: var(--balatro-red); }
+.status-positive { background-color: var(--balatro-green); }
+
+/* Main Panel Layout */
+.main-panel {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.suspects-container {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
+    width: 90%;
+    height: 70%;
 }
 
-.card {
-    width: 220px;
-    height: 450px;
-    margin: 15px;
-    background-color: rgb(220, 220, 220);
-    border-width: 4px;
-    border-color: rgb(20, 20, 20);
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-}
-
-.card-person {
-    flex-grow: 1;
-    background-color: rgb(59, 60, 132); /* Deep Blue */
-    justify-content: center;
-    align-items: center;
-    border-width: 2px;
-    border-color: rgba(0,0,0,0.5);
-    margin-bottom: 8px;
-}
-
-.card-person-label {
-    color: white;
-    font-size: 24px;
-    -unity-font-style: bold;
-    -unity-text-align: middle-center;
-}
-
-.card-name {
-    height: 60px;
-    background-color: rgb(93, 64, 55); /* Brown */
-    justify-content: center;
-    align-items: center;
-    border-width: 2px;
-    border-color: rgba(0,0,0,0.5);
-    margin-bottom: 8px;
-}
-
-.card-name-label {
-    color: white;
-    font-size: 18px;
-    -unity-font-style: bold;
-    -unity-text-align: middle-center;
-}
-
-.card-status {
-    height: 60px;
-    background-color: rgb(76, 175, 80); /* Green */
-    justify-content: center;
-    align-items: center;
-    border-width: 2px;
-    border-color: rgba(0,0,0,0.5);
-}
-
-.card-status-label {
-    color: white;
-    font-size: 18px;
-    -unity-font-style: bold;
-    -unity-text-align: middle-center;
-}
-
+/* Predict Button */
 .predict-button {
-    width: 600px;
-    height: 80px;
-    background-color: rgb(255, 0, 0); /* Bright Red */
-    border-width: 6px;
-    border-color: rgb(0, 0, 0);
+    width: 60%;
+    height: 100px;
+    background-color: var(--balatro-red);
+    font-size: 48px;
     color: white;
-    font-size: 40px;
     -unity-font-style: bold;
-    border-radius: 8px;
-    margin-top: 20px;
-    transition-duration: 0.1s;
+    border-width: 8px;
+    border-color: black;
+    border-radius: 15px;
+    margin-top: 50px;
+    transition: scale 0.1s ease-in-out;
+    text-shadow: 2px 2px 0px black;
 }
 
 .predict-button:hover {
-    background-color: rgb(220, 0, 0);
-    scale: 1.02;
+    scale: 1.05;
+    background-color: #F44336;
+    rotate: -1deg;
 }
 
-.predict-button:active {
-    background-color: rgb(180, 0, 0);
-    scale: 0.98;
+.predict-button.disabled {
+    background-color: #424242;
+    color: #9E9E9E;
+    border-color: #616161;
+}
+
+/* Investigation Panel */
+.investigation-panel {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+.investigation-panel.hidden {
+    display: none;
+}
+
+.investigation-container {
+    width: 80%;
+    height: 80%;
+    background-color: #E0E0E0;
+    border-width: 10px;
+    border-color: black;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+}
+
+.investigation-image {
+    width: 100%;
+    height: 100%;
+    background-color: var(--balatro-blue);
+    border-width: 6px;
+    border-color: black;
+    border-radius: 10px;
+}
+
+.investigation-title {
+    font-size: 48px;
+    color: black;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin-bottom: 20px;
+    border-bottom-width: 4px;
+    border-bottom-color: var(--balatro-red);
+}
+
+.evidence-text {
+    font-size: 26px;
+    color: black;
+    white-space: normal;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: #BDBDBD;
+    height: 100%;
+    -unity-text-align: middle-left;
+}
+
+/* Action Buttons */
+.actions-container {
+    height: 35%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #D7CCC8;
+    padding: 15px;
+    border-top-width: 6px;
+    border-color: black;
+    margin-top: 20px;
+    border-radius: 0 0 10px 10px;
+}
+
+.action-button {
+    width: 48%;
+    height: 45%;
+    background-color: var(--balatro-green);
+    color: white;
+    font-size: 24px;
+    -unity-font-style: bold;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: scale 0.1s;
+}
+
+.action-button:hover {
+    scale: 1.05;
+    border-color: white;
+}
+
+.action-button:active {
+    scale: 0.95;
+    background-color: #2E7D32;
+}
+
+.back-button {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 120px;
+    height: 60px;
+    background-color: black;
+    color: white;
+    font-size: 24px;
+    -unity-font-style: bold;
+    border-radius: 8px;
+    border-width: 2px;
+    border-color: white;
+}
+
+.back-button:hover {
+    background-color: #424242;
+    scale: 1.1;
 }

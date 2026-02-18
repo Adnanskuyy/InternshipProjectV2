@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="card-root" class="suspect-card">
+        <ui:VisualElement name="card-portrait" class="card-portrait" />
+        <ui:Label name="card-name" text="Suspect Name" class="card-name" />
+        <ui:Button name="status-button" text="UNKNOWN" class="status-button status-unknown" />
+    </ui:VisualElement>
+</ui:UXML>

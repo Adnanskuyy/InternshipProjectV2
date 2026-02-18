@@ -1,0 +1,27 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Style src="../Styles/BalatroTheme.uss" />
+    
+    <ui:VisualElement name="investigation-root" class="investigation-panel">
+        <ui:Button name="btn-back" text="Back" class="back-button" />
+        
+        <ui:Label name="investigation-name" text="Suspect Name" class="investigation-title" />
+        
+        <ui:VisualElement style="flex-direction: row; height: 60%; margin-top: 20px;">
+            <!-- Left: Portrait/Evidence Image -->
+            <ui:VisualElement name="evidence-view" class="investigation-image" style="flex-grow: 1; margin-right: 10px;" />
+            
+            <!-- Right: Text Description -->
+            <ui:VisualElement style="flex-grow: 1; margin-left: 10px;">
+                <ui:Label name="evidence-text" text="Select an action..." class="evidence-text" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        
+        <!-- Bottom Actions -->
+        <ui:VisualElement class="actions-container">
+            <ui:Button name="btn-body" text="Inspect Body" class="action-button" />
+            <ui:Button name="btn-cloth" text="Inspect Cloth" class="action-button" />
+            <ui:Button name="btn-rumor" text="Inspect Rumor" class="action-button" />
+            <ui:Button name="btn-urine" text="Urine Test" class="action-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
