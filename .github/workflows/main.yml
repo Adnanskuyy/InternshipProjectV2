@@ -46,6 +46,13 @@ jobs:
           # Saves build files for deployment
           path: build/WebGL
 
+      - name: Upload Unity Build Log
+        uses: actions/upload-artifact@v4
+        if: failure() # Only runs if the build fails
+        with:
+          name: Unity-Editor-Log
+          path: github-back-action-*.log # Or the path to your log file
+
   deploy:
     name: Deploy to GitHub Pages
     needs: build
