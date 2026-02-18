@@ -34,6 +34,10 @@ jobs:
         with:
           targetPlatform: WebGL
           unityVersion: 6000.3.8f1
+          # NEW: Unity 6 can be memory intensive; adding this helps stable builds
+          buildMethod: UnityBuilder.BuildInternal.PerformBuild
+          # NEW: Use a custom image if the default fails to find 6000.3.8f1
+          customImage: "unityci/editor:ubuntu-6000.3.8f1-webgl-3"
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
